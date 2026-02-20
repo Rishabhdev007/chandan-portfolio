@@ -41,4 +41,18 @@ document.querySelectorAll(".project-card").forEach((card) => {
   card.addEventListener("mouseleave", () => {
     card.style.transform = "translateY(0)";
   });
+  // Scroll Reveal Animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+});
+
+// Apply to all sections and cards
+document.querySelectorAll(".section, .project-card, .hero").forEach(el => {
+  el.classList.add("fade-in");
+  observer.observe(el);
+});
 });
